@@ -17,11 +17,14 @@ const wins = [
 
 const cells = document.querySelectorAll('.cell');
 
+var gameEnded = false;
+
 startGame();
 
 function startGame() {
+    gameEnded = false;
 
-    document.querySelectorAll('.endgame').display = "none";
+    document.querySelector('.endgame').style.display = "none";
 
     board = Array.from(Array(9).keys());
 
@@ -35,7 +38,12 @@ function startGame() {
 
 
 function cellClicked(event) {
-    highlight(event.target.id, human);
+    if (typeof board[event.target.id] == 'number') {
+        highlight(event.target.id, human);
+        if (!gameEnded  && !checkTie()) {
+            highlight(bestSpot(), computer);
+        }
+    }
 }
 
 function highlight(cellid, player) {
@@ -71,4 +79,33 @@ function gameOver(gameWon) {
     for (var i = 0; i < cells.length; i++) {
         cells[i].removeEventListener('click', cellClicked, false);
     }
+    declareWinner(gameWon.player==human?"You won!":"You lose!");
+}
+
+function checkTie() {
+    if(emptySquares().length==0){
+        for(var i=0;i<cells.length;i++){
+            cells[i].style.backgroundColor = "orange";
+            cells[i].removeEventListener('click',cellClicked,false);
+        }
+
+        declareWinner("Tie Game!");
+
+        return true;
+    }
+    return false;
+}
+
+function bestSpot() {
+    return emptySquares()[0];
+}
+
+function emptySquares() {
+    return board.filter(each => typeof each == 'number');
+}
+
+function declareWinner(who){
+    document.querySelector(".endgame").style.display = "block";
+    document.querySelector(".endgame .text").innerHTML = who;
+    gameEnded = true;
 }
