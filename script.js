@@ -97,7 +97,10 @@ function checkTie() {
 }
 
 function bestSpot() {
-    return emptySquares()[0];
+
+    return minmax(board,computer).index;
+    // Dumb Algo
+    // return emptySquares()[0];
 }
 
 function emptySquares() {
@@ -108,4 +111,55 @@ function declareWinner(who){
     document.querySelector(".endgame").style.display = "block";
     document.querySelector(".endgame .text").innerHTML = who;
     gameEnded = true;
+}
+
+function minmax(newBoard, player) {
+	var availSpots = emptySquares();
+
+	if (checkWin(newBoard, human)) {
+		return {score: -10};
+	} else if (checkWin(newBoard, computer)) {
+		return {score: 10};
+	} else if (availSpots.length === 0) {
+		return {score: 0};
+	}
+	var moves = [];
+	for (var i = 0; i < availSpots.length; i++) {
+		var move = {};
+		move.index = newBoard[availSpots[i]];
+		newBoard[availSpots[i]] = player;
+
+		if (player == computer) {
+			var result = minmax(newBoard, human);
+			move.score = result.score;
+		} else {
+			var result = minmax(newBoard, computer);
+			move.score = result.score;
+		}
+
+		newBoard[availSpots[i]] = move.index;
+
+		moves.push(move);
+	}
+
+	var bestMove;
+	if(player === computer) {
+		var bestScore = -10000;
+		for(var i = 0; i < moves.length; i++) {
+			if (moves[i].score > bestScore) {
+				bestScore = moves[i].score;
+				bestMove = i;
+			}
+		}
+	} else {
+		var bestScore = 10000;
+		for(var i = 0; i < moves.length; i++) {
+			if (moves[i].score < bestScore) {
+				bestScore = moves[i].score;
+				bestMove = i;
+			}
+		}
+	}
+
+	return moves[bestMove];
 }
