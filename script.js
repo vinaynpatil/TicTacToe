@@ -22,6 +22,7 @@ var gameEnded = false;
 startGame();
 
 function startGame() {
+    document.querySelectorAll("td").forEach((function(x){ x.setAttribute("class","enabled");}));
     gameEnded = false;
 
     document.querySelector('.endgame').style.display = "none";
@@ -111,6 +112,7 @@ function declareWinner(who){
     document.querySelector(".endgame").style.display = "block";
     document.querySelector(".endgame .text").innerHTML = who;
     gameEnded = true;
+    document.querySelectorAll("td").forEach((function(x){ x.setAttribute("class","disabled");}));
 }
 
 function minmax(newBoard, player) {
