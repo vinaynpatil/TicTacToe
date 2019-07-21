@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Yatra+One&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Concert+One&display=swap');
-
-html, body { 
-    height: 100%; 
-    width: 100%; 
-    margin: 0; 
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
     overflow-y: auto;
 }
 
@@ -18,14 +17,13 @@ td {
     font-family: 'Yatra One', cursive;
 }
 
-
 table {
     border-collapse: collapse;
     display: flex;
     justify-content: center;
 }
 
-.option-table td{
+.option-table td {
     border: none;
     height: 50px;
     text-align: center;
@@ -58,7 +56,7 @@ table tr td:last-child {
     margin-top: 1%;
 }
 
-.endgame div{
+.endgame div {
     z-index: 100;
 }
 
@@ -69,11 +67,11 @@ table tr td:last-child {
     margin-top: 1%;
 }
 
-.option-title div{
+.option-title div {
     z-index: 100;
 }
 
-.header{
+.header {
     margin-top: 5%;
     display: flex;
     justify-content: center;
@@ -82,7 +80,7 @@ table tr td:last-child {
     color: cadetblue;
 }
 
-.difficulty{
+.difficulty {
     display: flex;
     justify-content: center;
     font-family: 'Concert One', cursive;
@@ -90,19 +88,19 @@ table tr td:last-child {
     margin-top: 1.5%;
 }
 
-.diff-detail .title{
+.diff-detail .title {
     color: royalblue;
 }
 
-.level{
+.level {
     color: red;
 }
 
-.diff-change-option{
+.diff-change-option {
     display: none;
 }
 
-.separator{
+.separator {
     height: 10%;
     width: 10%;
 }
@@ -186,10 +184,31 @@ table tr td:last-child {
     -moz-transition: left 0.30000000000000004s ease;
 }
 
-.disabled{
+.disabled {
     cursor: auto;
 }
 
-.enabled{
+.enabled {
+    cursor: pointer;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    text-align: center;
+}
+
+.footer-text{
+    font-family: 'Concert One', cursive;
+}
+
+.love-icon{
+    color: red;
+}
+
+.footer-link{
     cursor: pointer;
 }
