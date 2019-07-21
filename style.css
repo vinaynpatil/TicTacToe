@@ -5,6 +5,7 @@ html, body {
     height: 100%; 
     width: 100%; 
     margin: 0; 
+    overflow-y: auto;
 }
 
 td {
@@ -21,6 +22,13 @@ td {
 table {
     border-collapse: collapse;
     display: flex;
+    justify-content: center;
+}
+
+.option-table td{
+    border: none;
+    height: 50px;
+    text-align: center;
     justify-content: center;
 }
 
@@ -47,9 +55,21 @@ table tr td:last-child {
     font-size: 2em;
     justify-content: center;
     font-family: 'Yatra One', cursive;
+    margin-top: 1%;
 }
 
 .endgame div{
+    z-index: 100;
+}
+
+.option-title {
+    text-align: center;
+    color: black;
+    justify-content: center;
+    margin-top: 1%;
+}
+
+.option-title div{
     z-index: 100;
 }
 
@@ -60,6 +80,22 @@ table tr td:last-child {
     font-family: 'Concert One', cursive;
     font-size: 4em;
     color: cadetblue;
+}
+
+.difficulty{
+    display: flex;
+    justify-content: center;
+    font-family: 'Concert One', cursive;
+    font-size: 2em;
+    margin-top: 1.5%;
+}
+
+.level{
+    color: red;
+}
+
+.diff-change-option{
+    display: none;
 }
 
 .separator{

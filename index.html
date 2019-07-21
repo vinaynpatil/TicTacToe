@@ -32,14 +32,40 @@
             </tr>
         </table>
     </div>
-    <div class="separator"></div>
-    <div class="endgame">
-        <div class="text"></div>
-        <br/>
-        <div onclick="startGame()" class="button_base b03_skewed_slide_in">
-                <div>Play Again</div>
-                <div></div>
-                <div>Good luck..</div>
+    <div class="difficulty">
+        <div class="diff-detail"><span class="title">Difficulty</span> -&nbsp;<span
+                class="level difficulty-color">Hard</span></div>
+        <div class="diff-change-option">
+            <table class="option-table">
+                <tr>
+                    <div class="endgame">
+                        <div class="text"></div>
+                    </div>
+                </tr>
+                <tr>
+                    <div class="option-title">
+                        <div>Chooses Difficulty</div>
+                    </div>
+                </tr>
+                <tr>
+                    <td>
+                        <div onclick="changeDifficulty('easy')" class="button_base b03_skewed_slide_in">
+                            <div>Easy</div>
+                            <div></div>
+                            <div>Try Easy?</div>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td>
+                        <div onclick="changeDifficulty('hard')" class="button_base b03_skewed_slide_in">
+                            <div>Hard</div>
+                            <div></div>
+                            <div>Try Hard?</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
         </div>
     </div>
 

@@ -19,9 +19,12 @@ const cells = document.querySelectorAll('.cell');
 
 var gameEnded = false;
 
+var difficult_level = "hard";
+
 startGame();
 
 function startGame() {
+    hideDifficultyOptions();
     document.querySelectorAll("td").forEach((function(x){ x.setAttribute("class","enabled");}));
     gameEnded = false;
 
@@ -98,10 +101,12 @@ function checkTie() {
 }
 
 function bestSpot() {
-
-    return minmax(board,computer).index;
-    // Dumb Algo
-    // return emptySquares()[0];
+    if(difficult_level=="hard"){
+        return minmax(board,computer).index;
+    }
+    else{
+        return emptySquares()[0];
+    }
 }
 
 function emptySquares() {
@@ -113,6 +118,7 @@ function declareWinner(who){
     document.querySelector(".endgame .text").innerHTML = who;
     gameEnded = true;
     document.querySelectorAll("td").forEach((function(x){ x.setAttribute("class","disabled");}));
+    showDifficultyOptions();
 }
 
 function minmax(newBoard, player) {
@@ -164,4 +170,28 @@ function minmax(newBoard, player) {
 	}
 
 	return moves[bestMove];
+}
+
+function changeDifficulty(level){
+    difficult_level = level;
+    document.querySelector(".level").innerHTML = level.charAt(0).toUpperCase() + level.slice(1) ;
+
+    if(level=="easy"){
+        document.querySelector(".level").style.color="green";
+    }
+    else{
+        document.querySelector(".level").style.color="red";
+    }
+
+    startGame();
+}
+
+function showDifficultyOptions(){
+    document.querySelector(".diff-detail").style.display = "none";
+    document.querySelector(".diff-change-option").style.display = "block";
+}
+
+function hideDifficultyOptions(){
+    document.querySelector(".diff-change-option").style.display = "none";
+    document.querySelector(".diff-detail").style.display = "block";
 }
